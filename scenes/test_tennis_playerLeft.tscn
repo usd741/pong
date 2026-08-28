@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://r2d1lvod3qy8"]
+
+[ext_resource type="Script" uid="uid://b6n51e5vtsl22" path="res://components/move_component.gd" id="1_w26ic"]
+[ext_resource type="Script" uid="uid://1px88aln4kbc" path="res://components/move_stats.gd" id="2_0p77f"]
+[ext_resource type="Script" uid="uid://c5twg88bc8rbv" path="res://components/move_input_component_vertical.gd" id="3_17f5w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgri6"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fgri6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkc22"]
+size = Vector2(10, 50)
+
+[node name="playerLeft" type="RigidBody2D" unique_id=985126601]
+collision_layer = 2
+collision_mask = 5
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_fgri6")
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="texture" type="TextureRect" parent="." unique_id=294448457]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -25.0
+offset_right = 5.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 25)
+texture = SubResource("PlaceholderTexture2D_fgri6")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="MoveComponent" type="Node" parent="." unique_id=212892891 node_paths=PackedStringArray("actor")]
+script = ExtResource("1_w26ic")
+actor = NodePath("..")
+velocity = Vector2(0, 1)
+metadata/_custom_type_script = "uid://b6n51e5vtsl22"
+
+[node name="MoveStats" type="Node" parent="." unique_id=1065828756]
+script = ExtResource("2_0p77f")
+speed = 500
+acceleration = 250
+metadata/_custom_type_script = "uid://1px88aln4kbc"
+
+[node name="MoveInputComponentVertical" type="Node" parent="." unique_id=456117046 node_paths=PackedStringArray("move_stats", "move_component")]
+script = ExtResource("3_17f5w")
+move_stats = NodePath("../MoveStats")
+move_component = NodePath("../MoveComponent")
+button_up = &"p1_up"
+button_down = &"p1_down"
+metadata/_custom_type_script = "uid://c5twg88bc8rbv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1799637240]
+shape = SubResource("RectangleShape2D_jkc22")

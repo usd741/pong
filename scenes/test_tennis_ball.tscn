@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bs1rphjvy22yl"]
+
+[ext_resource type="Script" uid="uid://b76mw3klxc0kc" path="res://scripts/test_tennis_ball.gd" id="1_8kv65"]
+[ext_resource type="Script" uid="uid://cik7saw7vtmrs" path="res://components/spin_component.gd" id="2_2diyu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_api61"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fcink"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2diyu"]
+radius = 16.03122
+
+[node name="Ball" type="RigidBody2D" unique_id=1505834247]
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_api61")
+gravity_scale = 0.0
+freeze_mode = 1
+contact_monitor = true
+script = ExtResource("1_8kv65")
+count_time = 0.5
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2101092003]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_fcink")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1327513821]
+shape = SubResource("CircleShape2D_2diyu")
+
+[node name="SpinComponent" type="Node" parent="." unique_id=1731233056 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_2diyu")
+actor = NodePath("..")
+spin_factor = 50.0
+metadata/_custom_type_script = "uid://cik7saw7vtmrs"
