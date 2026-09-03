@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bp6qseqcmf13t"]
+
+[node name="ControlUI" type="Control" unique_id=1474909108]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContAll" type="BoxContainer" parent="." unique_id=921755616]
+layout_mode = 1
+offset_right = 640.0
+offset_bottom = 480.0
+alignment = 2
+vertical = true
+
+[node name="HBoxContScore" type="HBoxContainer" parent="HBoxContAll" unique_id=297645466]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelP1Score" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=212750649]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="ControlSeparator" type="Control" parent="HBoxContAll/HBoxContScore" unique_id=2003390383]
+custom_minimum_size = Vector2(490, 0)
+layout_mode = 2
+
+[node name="LabelP2Score" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=1928059916]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ControlSeparator" type="Control" parent="HBoxContAll" unique_id=1986776777]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2

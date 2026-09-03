@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://btb1a12vlxoml"]
+
+[ext_resource type="PackedScene" uid="uid://r2d1lvod3qy8" path="res://scenes/tennis_playerLeft.tscn" id="2_f3esc"]
+[ext_resource type="PackedScene" uid="uid://b1mbyttgokt40" path="res://scenes/tennis_playerRight.tscn" id="3_e6cx5"]
+[ext_resource type="PackedScene" uid="uid://bs1rphjvy22yl" path="res://scenes/tennis_ball.tscn" id="3_ifhmm"]
+[ext_resource type="PackedScene" uid="uid://bp6qseqcmf13t" path="res://scenes/control_ui.tscn" id="4_e6cx5"]
+[ext_resource type="Script" uid="uid://ub54xxh2tehx" path="res://scripts/round_game_manager.gd" id="5_ifhmm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k4xd3"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pnbhv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gdne3"]
+normal = Vector2(0, 1)
+
+[node name="scene_01" type="Node2D" unique_id=1393285358]
+metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [480.0, 440.0, 0.0, 40.0]
+
+[node name="playerLeft" parent="." unique_id=985126601 instance=ExtResource("2_f3esc")]
+position = Vector2(14, 218)
+
+[node name="playerRight" parent="." unique_id=2020446970 instance=ExtResource("3_e6cx5")]
+position = Vector2(628, 226)
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="." unique_id=774662731]
+position = Vector2(321, 0)
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_k4xd3")
+
+[node name="CollisionShape2D_bottom" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1710014809]
+position = Vector2(0, 440)
+shape = SubResource("WorldBoundaryShape2D_pnbhv")
+
+[node name="CollisionShape2D_top" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1519785948]
+position = Vector2(0, 40)
+shape = SubResource("WorldBoundaryShape2D_gdne3")
+
+[node name="CollisionShape2D_right" type="CollisionShape2D" parent="WorldBoundaries" unique_id=1621813477]
+visible = false
+position = Vector2(321, 222)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_gdne3")
+disabled = true
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="WorldBoundaries" unique_id=175258848]
+visible = false
+position = Vector2(-323, 231)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_gdne3")
+disabled = true
+
+[node name="UI" parent="." unique_id=1474909108 instance=ExtResource("4_e6cx5")]
+
+[node name="RoundGameManager" type="Node" parent="." unique_id=1317701435 node_paths=PackedStringArray("ui_scene")]
+script = ExtResource("5_ifhmm")
+ui_scene = NodePath("../UI")
+ball_scene = ExtResource("3_ifhmm")

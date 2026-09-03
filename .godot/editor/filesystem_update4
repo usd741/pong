@@ -1,0 +1,4 @@
+res://scenes/tennis_scene.tscn
+res://scripts/round_game_manager.gd
+res://scripts/tennis_ball.gd
+res://components/ball_spawner_component.gd

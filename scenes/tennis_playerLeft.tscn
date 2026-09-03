@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://r2d1lvod3qy8"]
+
+[ext_resource type="Script" uid="uid://b6n51e5vtsl22" path="res://components/move_component.gd" id="1_w26ic"]
+[ext_resource type="Script" uid="uid://1px88aln4kbc" path="res://components/move_stats.gd" id="2_0p77f"]
+[ext_resource type="Script" uid="uid://c5twg88bc8rbv" path="res://components/move_input_component_vertical.gd" id="3_17f5w"]
+[ext_resource type="Script" uid="uid://bxfmmjwikdugc" path="res://components/grab_component.gd" id="4_ux30k"]
+[ext_resource type="Script" uid="uid://dxh7b2ju04gn2" path="res://components/show_direction_component.gd" id="5_1jrdf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgri6"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fgri6"]
+size = Vector2(10, 50)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ux30k"]
+size = Vector2(35, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkc22"]
+size = Vector2(10, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgri6"]
+radius = 40.0
+
+[node name="playerLeft" type="RigidBody2D" unique_id=985126601]
+collision_layer = 2
+collision_mask = 5
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_fgri6")
+gravity_scale = 0.0
+freeze_mode = 1
+contact_monitor = true
+
+[node name="Sprite2d_player" type="Sprite2D" parent="." unique_id=1103480547]
+texture = SubResource("PlaceholderTexture2D_fgri6")
+
+[node name="Sprite2d_shotDirArrow" type="Sprite2D" parent="." unique_id=764655164]
+visible = false
+texture = SubResource("PlaceholderTexture2D_ux30k")
+offset = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1799637240]
+shape = SubResource("RectangleShape2D_jkc22")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1504866053]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=724399376]
+shape = SubResource("CircleShape2D_fgri6")
+
+[node name="MoveComponent" type="Node" parent="." unique_id=212892891 node_paths=PackedStringArray("actor")]
+script = ExtResource("1_w26ic")
+actor = NodePath("..")
+velocity = Vector2(0, 1)
+metadata/_custom_type_script = "uid://b6n51e5vtsl22"
+
+[node name="MoveStats" type="Node" parent="." unique_id=1065828756]
+script = ExtResource("2_0p77f")
+speed = 500
+acceleration = 250
+metadata/_custom_type_script = "uid://1px88aln4kbc"
+
+[node name="MoveInputComponentVertical" type="Node" parent="." unique_id=456117046 node_paths=PackedStringArray("move_stats", "move_component")]
+script = ExtResource("3_17f5w")
+move_stats = NodePath("../MoveStats")
+move_component = NodePath("../MoveComponent")
+button_up = &"p1_up"
+button_down = &"p1_down"
+metadata/_custom_type_script = "uid://c5twg88bc8rbv"
+
+[node name="ShotDirectionComponent" type="Node" parent="." unique_id=1587930394 node_paths=PackedStringArray("parent", "grab_component", "sprite")]
+script = ExtResource("5_1jrdf")
+parent = NodePath("..")
+grab_component = NodePath("../GrabComponent")
+sprite = NodePath("../Sprite2d_shotDirArrow")
+metadata/_custom_type_script = "uid://dxh7b2ju04gn2"
+
+[node name="GrabComponent" type="Node" parent="." unique_id=1381307851 node_paths=PackedStringArray("actor", "area", "shape")]
+script = ExtResource("4_ux30k")
+actor = NodePath("..")
+area = NodePath("../Area2D")
+shape = NodePath("../Area2D/CollisionShape2D")
+grab_key = "p1_grab"
+aim_up_key = "p1_up"
+aim_down_key = "p1_down"
+metadata/_custom_type_script = "uid://bxfmmjwikdugc"

@@ -1,0 +1,14 @@
+BallSpawnerComponent
+Node
+VisibleOnScreenNotifier2D
+Control
+HBoxContainer
+VBoxContainer
+BoxContainer
+Label
+TextEdit
+Sprite2D
+ShotDirectionComponent
+GrabComponent
+CollisionShape2D
+Area2D
