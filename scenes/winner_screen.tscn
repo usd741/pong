@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://hbfv0fbidjeq"]
+
+[node name="Control" type="Control" unique_id=1474909108]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContAll" type="BoxContainer" parent="." unique_id=921755616]
+layout_mode = 1
+offset_right = 640.0
+offset_bottom = 480.0
+alignment = 1
+vertical = true
+
+[node name="HBoxContScore" type="HBoxContainer" parent="HBoxContAll" unique_id=297645466]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelWinnerDescription1" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=1027348321]
+layout_mode = 2
+text = "Раунд победил"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelWinnerName" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=212750649]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "<winner name>"
+vertical_alignment = 1
+
+[node name="LabelWinnerDescription2" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=1928059916]
+layout_mode = 2
+text = "!"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContScore2" type="HBoxContainer" parent="HBoxContAll" unique_id=630159475]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelWinnerDescription2" type="Label" parent="HBoxContAll/HBoxContScore2" unique_id=619840542]
+layout_mode = 2
+text = "со счетом"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelWinnerScore" type="Label" parent="HBoxContAll/HBoxContScore2" unique_id=1305213312]
+layout_mode = 2
+text = "<round_score>"
+horizontal_alignment = 2
+vertical_alignment = 1
