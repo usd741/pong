@@ -2,6 +2,8 @@ extends Node
 
 var win_score: int = 5
 
+signal round_ended(winner: int, score_p1: int, score_p2: int)
+
 @export var ui_scene: Node #select the ui scene
 @export var ball_spawner: BallSpawnerComponent
 
@@ -40,6 +42,8 @@ func update_score_ui() -> void:
 	
 func check_round_end():
 	if round_score_p1 >= win_score:
+		round_ended.emit(1, round_score_p1, round_score_p2)
 		GlobalGameManager.add_round_result(1, round_score_p1, round_score_p2)
 	elif round_score_p2 >= win_score:
+		round_ended.emit(2, round_score_p1, round_score_p2)
 		GlobalGameManager.add_round_result(2, round_score_p1, round_score_p2)

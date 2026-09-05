@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://hbfv0fbidjeq"]
 
+[ext_resource type="Script" uid="uid://cq172cnmrupbw" path="res://scripts/winner_screen.gd" id="1_mm6lb"]
+
 [node name="Control" type="Control" unique_id=1474909108]
 layout_mode = 3
 anchors_preset = 15
@@ -7,49 +9,87 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mm6lb")
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContAll" type="BoxContainer" parent="." unique_id=921755616]
-layout_mode = 1
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 480.0
 alignment = 1
 vertical = true
 
-[node name="HBoxContScore" type="HBoxContainer" parent="HBoxContAll" unique_id=297645466]
+[node name="HBoxStroke1" type="HBoxContainer" parent="HBoxContAll" unique_id=297645466]
 layout_mode = 2
 alignment = 1
 
-[node name="LabelWinnerDescription1" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=1027348321]
+[node name="LabelWinnerDescription1" type="Label" parent="HBoxContAll/HBoxStroke1" unique_id=1027348321]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Раунд победил"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LabelWinnerName" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=212750649]
+[node name="LabelWinnerName" type="Label" parent="HBoxContAll/HBoxStroke1" unique_id=212750649]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "<winner name>"
 vertical_alignment = 1
 
-[node name="LabelWinnerDescription2" type="Label" parent="HBoxContAll/HBoxContScore" unique_id=1928059916]
+[node name="LabelWinnerDescription2" type="Label" parent="HBoxContAll/HBoxStroke1" unique_id=1928059916]
+unique_name_in_owner = true
 layout_mode = 2
 text = "!"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContScore2" type="HBoxContainer" parent="HBoxContAll" unique_id=630159475]
+[node name="HBoxHBoxStroke1" type="HBoxContainer" parent="HBoxContAll" unique_id=630159475]
 layout_mode = 2
 alignment = 1
 
-[node name="LabelWinnerDescription2" type="Label" parent="HBoxContAll/HBoxContScore2" unique_id=619840542]
+[node name="LabelWinnerDescription3" type="Label" parent="HBoxContAll/HBoxHBoxStroke1" unique_id=619840542]
+unique_name_in_owner = true
 layout_mode = 2
 text = "со счетом"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LabelWinnerScore" type="Label" parent="HBoxContAll/HBoxContScore2" unique_id=1305213312]
+[node name="LabelWinnerScore" type="Label" parent="HBoxContAll/HBoxHBoxStroke1" unique_id=1305213312]
+unique_name_in_owner = true
 layout_mode = 2
 text = "<round_score>"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ControlSeparator" type="Control" parent="HBoxContAll" unique_id=1287290306]
+custom_minimum_size = Vector2(0, 28.18)
+layout_mode = 2
+
+[node name="HBoxButtons" type="HBoxContainer" parent="HBoxContAll" unique_id=191584647]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonRestart" type="Button" parent="HBoxContAll/HBoxButtons" unique_id=1430136986]
+custom_minimum_size = Vector2(125, 30)
+custom_maximum_size = Vector2(125, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Переиграть"
+
+[node name="ButtonStage1" type="Button" parent="HBoxContAll/HBoxButtons" unique_id=733900449]
+custom_minimum_size = Vector2(125, 30)
+custom_maximum_size = Vector2(125, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Следующий"
+
+[node name="ButtonExit" type="Button" parent="HBoxContAll/HBoxButtons" unique_id=1780088144]
+custom_minimum_size = Vector2(125, 30)
+custom_maximum_size = Vector2(125, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Главное меню"

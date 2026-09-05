@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bp6qseqcmf13t" path="res://scenes/control_ui.tscn" id="4_e6cx5"]
 [ext_resource type="Script" uid="uid://ub54xxh2tehx" path="res://scripts/round_game_manager.gd" id="5_ifhmm"]
 [ext_resource type="Script" uid="uid://bdbuvu6nxigob" path="res://components/ball_spawner_component.gd" id="6_losqn"]
+[ext_resource type="Script" uid="uid://tl7eopyl4t2v" path="res://components/stage_manager_component.gd" id="7_kty8a"]
+[ext_resource type="PackedScene" uid="uid://hbfv0fbidjeq" path="res://scenes/winner_screen.tscn" id="8_qf0oj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k4xd3"]
 friction = 0.0
@@ -55,12 +57,18 @@ disabled = true
 
 [node name="UI" parent="." unique_id=1474909108 instance=ExtResource("4_e6cx5")]
 
+[node name="BallSpawnerComponent" type="Node" parent="." unique_id=98177043]
+script = ExtResource("6_losqn")
+ball_scene = ExtResource("3_ifhmm")
+metadata/_custom_type_script = "uid://bdbuvu6nxigob"
+
 [node name="RoundGameManager" type="Node" parent="." unique_id=1317701435 node_paths=PackedStringArray("ui_scene", "ball_spawner")]
 script = ExtResource("5_ifhmm")
 ui_scene = NodePath("../UI")
 ball_spawner = NodePath("../BallSpawnerComponent")
 
-[node name="BallSpawnerComponent" type="Node" parent="." unique_id=98177043]
-script = ExtResource("6_losqn")
-ball_scene = ExtResource("3_ifhmm")
-metadata/_custom_type_script = "uid://bdbuvu6nxigob"
+[node name="StageManagerComponent" type="Node" parent="." unique_id=1103559755 node_paths=PackedStringArray("round_manager")]
+script = ExtResource("7_kty8a")
+winner_screen = ExtResource("8_qf0oj")
+round_manager = NodePath("../RoundGameManager")
+metadata/_custom_type_script = "uid://tl7eopyl4t2v"
